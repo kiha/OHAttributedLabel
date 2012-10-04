@@ -127,6 +127,7 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 
 - (void)commonInit
 {
+    self.trimWhitespace = YES;
     _linkColor = MRC_RETAIN([UIColor blueColor]);
     _highlightedLinkColor = MRC_RETAIN([UIColor colorWithWhite:0.4f alpha:0.3f]);
 	_linkUnderlineStyle = kCTUnderlineStyleSingle | kCTUnderlinePatternSolid;
@@ -679,6 +680,7 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 @synthesize onlyCatchTouchesOnLinks = _onlyCatchTouchesOnLinks;
 @synthesize catchTouchesOnLinksOnTouchBegan = _catchTouchesOnLinksOnTouchBegan;
 @synthesize extendBottomToFit = _extendBottomToFit;
+@synthesize trimWhitespace = _trimWhitespace;
 @synthesize delegate = _delegate;
 
 
@@ -726,10 +728,35 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 
 -(void)setText:(NSString *)text
 {
-	NSString* cleanedText = [[text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"]
-							 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	[super setText:cleanedText]; // will call setNeedsDisplay too
+    if (self.trimWhitespace)
+    {
+        NSString* cleanedText = [[text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"]
+                                 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        [super setText:cleanedText]; // will call setNeedsDisplay too
+    }
+    else
+    {
+        [super setText:text];
+    }
 	[self resetAttributedText];
+}
+
+- (void)setTrimWhitespace:(BOOL)trimWhitespace
+{
+    if (_trimWhitespace != trimWhitespace)
+    {
+        _trimWhitespace = trimWhitespace;
+        
+        if (_trimWhitespace && self.text.length)
+        {
+            NSString* cleanedText = [[self.text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"]
+                                     stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            if (cleanedText.length != self.text.length)
+            {
+                self.text = cleanedText;
+            }
+        }
+    }
 }
 
 -(void)setFont:(UIFont *)font

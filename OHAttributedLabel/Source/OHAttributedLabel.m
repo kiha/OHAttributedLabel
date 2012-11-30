@@ -28,8 +28,8 @@
 #import "OHAttributedLabel.h"
 #import "CoreTextUtils.h"
 
-#define OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES 1
-#define OHATTRIBUTEDLABEL_WARN_ABOUT_OLD_API 1
+#define OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES 0
+#define OHATTRIBUTEDLABEL_WARN_ABOUT_OLD_API 0
 
 #ifndef OHATTRIBUTEDLABEL_DEDICATED_PROJECT
 // Copying files in your project and thus compiling OHAttributedLabel under different build settings

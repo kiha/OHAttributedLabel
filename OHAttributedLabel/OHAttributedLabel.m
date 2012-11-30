@@ -29,8 +29,8 @@
 #import "NSAttributedString+Attributes.h"
 #import "CoreTextUtils.h"
 
-#define OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES 1
-#define OHATTRIBUTEDLABEL_WARN_ABOUT_OLD_API 1
+#define OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES 0
+#define OHATTRIBUTEDLABEL_WARN_ABOUT_OLD_API 0
 
 
 /////////////////////////////////////////////////////////////////////////////////////

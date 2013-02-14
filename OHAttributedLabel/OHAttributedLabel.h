@@ -60,7 +60,23 @@ __attribute__((unavailable("Since iOS6 SDK, you have to use 'setTextAlignment:li
 #pragma mark - Public Interface
 /////////////////////////////////////////////////////////////////////////////////////
 
+// Some previously private members, methods, and properties need to be public so we
+// can access and/or override them in subclasses to change link behavior.
+// ~emm 20130214
 @interface OHAttributedLabel : UILabel <UIAppearance>
+{
+	NSAttributedString* _attributedText;
+  NSAttributedString* _attributedTextWithLinks;
+  BOOL _needsRecomputeLinksInText;
+  NSDataDetector* _linksDetector;
+	CTFrameRef textFrame;
+	CGRect drawingRect;
+	NSMutableArray* _customLinks;
+	CGPoint _touchStartPoint;
+}
+@property(nonatomic, retain) NSTextCheckingResult* activeLink;
+-(void)drawActiveLinkHighlightForRect:(CGRect)rect;
+-(void)recomputeLinksInTextIfNeeded;
 
 //! Use this instead of the "text" property inherited from UILabel to set and get attributed text
 @property(nonatomic, copy) NSAttributedString* attributedText;

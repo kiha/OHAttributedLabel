@@ -40,23 +40,26 @@
 
 const int UITextAlignmentJustify = ((UITextAlignment)kCTJustifiedTextAlignment);
 
+// Some previously private members, methods, and properties need to be public so we
+// can access and/or override them in subclasses to change link behavior.
+// ~emm 20130214
 @interface OHAttributedLabel(/* Private */)
-{
-	NSAttributedString* _attributedText;
-    NSAttributedString* _attributedTextWithLinks;
-    BOOL _needsRecomputeLinksInText;
-    NSDataDetector* _linksDetector;
-	CTFrameRef textFrame;
-	CGRect drawingRect;
-	NSMutableArray* _customLinks;
-	CGPoint _touchStartPoint;
-}
-@property(nonatomic, retain) NSTextCheckingResult* activeLink;
+//{
+//	NSAttributedString* _attributedText;
+//    NSAttributedString* _attributedTextWithLinks;
+//    BOOL _needsRecomputeLinksInText;
+//    NSDataDetector* _linksDetector;
+//	CTFrameRef textFrame;
+//	CGRect drawingRect;
+//	NSMutableArray* _customLinks;
+//	CGPoint _touchStartPoint;
+//}
+//@property(nonatomic, retain) NSTextCheckingResult* activeLink;
 -(NSTextCheckingResult*)linkAtCharacterIndex:(CFIndex)idx;
 -(NSTextCheckingResult*)linkAtPoint:(CGPoint)pt;
 -(void)resetTextFrame;
--(void)drawActiveLinkHighlightForRect:(CGRect)rect;
--(void)recomputeLinksInTextIfNeeded;
+//-(void)drawActiveLinkHighlightForRect:(CGRect)rect;
+//-(void)recomputeLinksInTextIfNeeded;
 #if OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES
 -(void)warnAboutKnownIssues_CheckLineBreakMode_FromXIB:(BOOL)fromXIB;
 -(void)warnAboutKnownIssues_CheckAdjustsFontSizeToFitWidth_FromXIB:(BOOL)fromXIB;

@@ -7,8 +7,11 @@
 //
 
 #import "BasicDemoViewController.h"
-#import "NSAttributedString+Attributes.h"
 #import "UIAlertView+Commodity.h"
+
+#import <OHAttributedLabel/NSAttributedString+Attributes.h>
+#import <OHAttributedLabel/OHASBasicHTMLParser.h>
+#import <OHAttributedLabel/OHASBasicMarkupParser.h>
 
 @interface BasicDemoViewController ()
 @property(nonatomic, retain) NSMutableSet* visitedLinks;
@@ -16,6 +19,8 @@
 
 @implementation BasicDemoViewController
 @synthesize demoLabel = _demoLabel;
+@synthesize htmlLabel = _htmlLabel;
+@synthesize basicMarkupLabel = _basicMarkupLabel;
 @synthesize visitedLinks = _visitedLinks;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -38,6 +43,8 @@
 {
     [_visitedLinks release];
     [_demoLabel release];
+    [_htmlLabel release];
+    [_basicMarkupLabel release];
     [super dealloc];
 }
 #endif
@@ -45,12 +52,25 @@
 -(void)viewDidLoad
 {
 	[self fillDemoLabel];
+    
+    // HTML label
+    self.htmlLabel.attributedText = [OHASBasicHTMLParser attributedStringByProcessingMarkupInAttributedString:self.htmlLabel.attributedText];
+    
+    // Basic Markup label. Add some indentation to the text to demonstrate the OHParagraphStyle new feature.
+    NSMutableAttributedString* basicMarkupString = [OHASBasicMarkupParser attributedStringByProcessingMarkupInAttributedString:self.basicMarkupLabel.attributedText];
+    [basicMarkupString modifyParagraphStylesWithBlock:^(OHParagraphStyle *paragraphStyle) {
+        paragraphStyle.firstLineHeadIndent = 20.f;
+    }];
+    self.basicMarkupLabel.attributedText = basicMarkupString;
+    
     [super viewDidLoad];
 }
 
 -(void)viewDidUnload
 {
     [super viewDidUnload];
+    self.htmlLabel = nil;
+    self.basicMarkupLabel = nil;
     self.demoLabel = nil;
 }
 
@@ -68,15 +88,25 @@
 	
 	/**(1)** Build the NSAttributedString *******/
 	NSMutableAttributedString* attrStr = [self.demoLabel.attributedText mutableCopy];
-    [attrStr setTextAlignment:kCTCenterTextAlignment lineBreakMode:kCTLineBreakByWordWrapping];
-	// and only change the color of "Hello"
+
+    // Change the paragraph attributes, like textAlignment, lineBreakMode and paragraph spacing
+    [attrStr modifyParagraphStylesWithBlock:^(OHParagraphStyle *paragraphStyle) {
+        paragraphStyle.textAlignment = kCTCenterTextAlignment;
+        paragraphStyle.lineBreakMode = kCTLineBreakByWordWrapping;
+        paragraphStyle.paragraphSpacing = 8.f;
+        paragraphStyle.lineSpacing = 3.f;
+    }];
+	// and only change the color of the "Visit" word
 	[attrStr setTextColor:[UIColor redColor] range:NSMakeRange(26,5)];
+    // and the color and font of the "post your food" text
+    [attrStr setTextColor:[UIColor colorWithRed:0.0 green:0.7 blue:0.0 alpha:1.0] range:NSMakeRange(63,15)];
+    [attrStr setFontFamily:@"helvetica" size:18 bold:YES italic:YES range:NSMakeRange(63,15)];
 	
 	/**(2)** Affect the NSAttributedString to the OHAttributedLabel *******/
 	self.demoLabel.attributedText = attrStr;
 	// "Hello World!" will be displayed in the label, justified, "Hello" in red and " World!" in gray.
 	self.demoLabel.automaticallyAddLinksForType = NSTextCheckingTypeDate|NSTextCheckingTypeAddress|NSTextCheckingTypeLink|NSTextCheckingTypePhoneNumber;
-    self.demoLabel.centerVertically = NO;
+    self.demoLabel.centerVertically = YES;
     
 #if ! __has_feature(objc_arc)
 	[attrStr release];

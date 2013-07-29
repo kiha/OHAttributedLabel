@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0926A8111698ADDD00573783 /* OHParagraphStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0926A80F1698ADDD00573783 /* OHParagraphStyle.m */; };
+		09793559161393F2006DB5D5 /* OHASMarkupParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 09793557161393F2006DB5D5 /* OHASMarkupParserBase.m */; };
+		0979355D1613A5AE006DB5D5 /* OHASBasicHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979355B1613A5AE006DB5D5 /* OHASBasicHTMLParser.m */; };
+		097935611613B276006DB5D5 /* OHASBasicMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0979355F1613B276006DB5D5 /* OHASBasicMarkupParser.m */; };
+		09804E0716A8CAA400ADC660 /* OHAttributedLabel.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09E15A02160F57E2003025B4 /* OHAttributedLabel.h */; };
+		09804E0816A8CAA400ADC660 /* OHParagraphStyle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0926A80E1698ADDD00573783 /* OHParagraphStyle.h */; };
+		09804E0916A8CAA400ADC660 /* NSAttributedString+Attributes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09E15A00160F57E2003025B4 /* NSAttributedString+Attributes.h */; };
+		09804E0A16A8CAA400ADC660 /* NSTextCheckingResult+ExtendedURL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09E15A27160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h */; };
+		09804E0B16A8CAA400ADC660 /* OHASMarkupParserBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 09793556161393F2006DB5D5 /* OHASMarkupParserBase.h */; };
+		09804E0C16A8CAA400ADC660 /* OHASBasicHTMLParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0979355A1613A5AE006DB5D5 /* OHASBasicHTMLParser.h */; };
+		09804E0D16A8CAA400ADC660 /* OHASBasicMarkupParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0979355E1613B276006DB5D5 /* OHASBasicMarkupParser.h */; };
 		09E159EC160F573A003025B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E159EB160F573A003025B4 /* Foundation.framework */; };
 		09E159FE160F57AB003025B4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E159FD160F57AB003025B4 /* CoreText.framework */; };
 		09E15A04160F57E2003025B4 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E15A01160F57E2003025B4 /* NSAttributedString+Attributes.m */; };
@@ -20,7 +31,35 @@
 		09E15A2C160F64EB003025B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E15A2B160F64EB003025B4 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		09804E0516A8CA8800ADC660 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				09804E0716A8CAA400ADC660 /* OHAttributedLabel.h in CopyFiles */,
+				09804E0816A8CAA400ADC660 /* OHParagraphStyle.h in CopyFiles */,
+				09804E0916A8CAA400ADC660 /* NSAttributedString+Attributes.h in CopyFiles */,
+				09804E0A16A8CAA400ADC660 /* NSTextCheckingResult+ExtendedURL.h in CopyFiles */,
+				09804E0B16A8CAA400ADC660 /* OHASMarkupParserBase.h in CopyFiles */,
+				09804E0C16A8CAA400ADC660 /* OHASBasicHTMLParser.h in CopyFiles */,
+				09804E0D16A8CAA400ADC660 /* OHASBasicMarkupParser.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0926A80E1698ADDD00573783 /* OHParagraphStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHParagraphStyle.h; sourceTree = "<group>"; };
+		0926A80F1698ADDD00573783 /* OHParagraphStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHParagraphStyle.m; sourceTree = "<group>"; };
+		09793556161393F2006DB5D5 /* OHASMarkupParserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASMarkupParserBase.h; sourceTree = "<group>"; };
+		09793557161393F2006DB5D5 /* OHASMarkupParserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASMarkupParserBase.m; sourceTree = "<group>"; };
+		0979355A1613A5AE006DB5D5 /* OHASBasicHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASBasicHTMLParser.h; sourceTree = "<group>"; };
+		0979355B1613A5AE006DB5D5 /* OHASBasicHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASBasicHTMLParser.m; sourceTree = "<group>"; };
+		0979355E1613B276006DB5D5 /* OHASBasicMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASBasicMarkupParser.h; sourceTree = "<group>"; };
+		0979355F1613B276006DB5D5 /* OHASBasicMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASBasicMarkupParser.m; sourceTree = "<group>"; };
+		097935631613CD6E006DB5D5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		09E159E8160F573A003025B4 /* libOHAttributedLabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOHAttributedLabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E159EB160F573A003025B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		09E159FD160F57AB003025B4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -51,9 +90,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09793554161393AE006DB5D5 /* TagParsers */ = {
+			isa = PBXGroup;
+			children = (
+				09793556161393F2006DB5D5 /* OHASMarkupParserBase.h */,
+				09793557161393F2006DB5D5 /* OHASMarkupParserBase.m */,
+				0979355A1613A5AE006DB5D5 /* OHASBasicHTMLParser.h */,
+				0979355B1613A5AE006DB5D5 /* OHASBasicHTMLParser.m */,
+				0979355E1613B276006DB5D5 /* OHASBasicMarkupParser.h */,
+				0979355F1613B276006DB5D5 /* OHASBasicMarkupParser.m */,
+			);
+			path = TagParsers;
+			sourceTree = "<group>";
+		};
+		097935621613B419006DB5D5 /* Private Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				09E15A23160F63DE003025B4 /* CoreTextUtils.h */,
+				09E15A24160F63DE003025B4 /* CoreTextUtils.m */,
+			);
+			name = "Private Utilities";
+			path = PrivateUtils;
+			sourceTree = "<group>";
+		};
 		09E159DD160F573A003025B4 = {
 			isa = PBXGroup;
 			children = (
+				097935631613CD6E006DB5D5 /* README.md */,
 				09E15A06160F57F4003025B4 /* CHANGELOG */,
 				09E15A07160F57F4003025B4 /* LICENSE */,
 				09E159FF160F57D5003025B4 /* Source */,
@@ -83,33 +146,30 @@
 		09E159FF160F57D5003025B4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				09E15A02160F57E2003025B4 /* OHAttributedLabel.h */,
-				09E15A03160F57E2003025B4 /* OHAttributedLabel.m */,
-				09E15A00160F57E2003025B4 /* NSAttributedString+Attributes.h */,
-				09E15A01160F57E2003025B4 /* NSAttributedString+Attributes.m */,
-				09E15A27160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h */,
-				09E15A28160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.m */,
-				09E15A23160F63DE003025B4 /* CoreTextUtils.h */,
-				09E15A24160F63DE003025B4 /* CoreTextUtils.m */,
+				47554A5A161485A200904E5E /* OHAttributedLabel */,
+				09793554161393AE006DB5D5 /* TagParsers */,
+				097935621613B419006DB5D5 /* Private Utilities */,
 			);
 			name = Source;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		09E15A1F160F5DA8003025B4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				09E15A21160F5DAF003025B4 /* NSAttributedString+Attributes.h in Headers */,
-				09E15A22160F5DAF003025B4 /* OHAttributedLabel.h in Headers */,
-				09E15A25160F63DE003025B4 /* CoreTextUtils.h in Headers */,
-				09E15A29160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h in Headers */,
+		47554A5A161485A200904E5E /* OHAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				09E15A02160F57E2003025B4 /* OHAttributedLabel.h */,
+				09E15A03160F57E2003025B4 /* OHAttributedLabel.m */,
+				0926A80E1698ADDD00573783 /* OHParagraphStyle.h */,
+				0926A80F1698ADDD00573783 /* OHParagraphStyle.m */,
+				09E15A00160F57E2003025B4 /* NSAttributedString+Attributes.h */,
+				09E15A01160F57E2003025B4 /* NSAttributedString+Attributes.m */,
+				09E15A27160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h */,
+				09E15A28160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.m */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			name = OHAttributedLabel;
+			path = Source;
+			sourceTree = "<group>";
 		};
-/* End PBXHeadersBuildPhase section */
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		09E159E7160F573A003025B4 /* OHAttributedLabel */ = {
@@ -118,7 +178,7 @@
 			buildPhases = (
 				09E159E4160F573A003025B4 /* Sources */,
 				09E159E5160F573A003025B4 /* Frameworks */,
-				09E15A1F160F5DA8003025B4 /* Headers */,
+				09804E0516A8CA8800ADC660 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -164,6 +224,10 @@
 				09E15A05160F57E2003025B4 /* OHAttributedLabel.m in Sources */,
 				09E15A26160F63DE003025B4 /* CoreTextUtils.m in Sources */,
 				09E15A2A160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.m in Sources */,
+				09793559161393F2006DB5D5 /* OHASMarkupParserBase.m in Sources */,
+				0979355D1613A5AE006DB5D5 /* OHASBasicHTMLParser.m in Sources */,
+				097935611613B276006DB5D5 /* OHASBasicMarkupParser.m in Sources */,
+				0926A8111698ADDD00573783 /* OHParagraphStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,9 +289,19 @@
 		09E159F7160F573A003025B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					OHATTRIBUTEDLABEL_DEDICATED_PROJECT,
+					"$(inherited)",
+				);
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -235,9 +309,19 @@
 		09E159F8160F573A003025B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				OTHER_LDFLAGS = "-ObjC";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					OHATTRIBUTEDLABEL_DEDICATED_PROJECT,
+					"$(inherited)",
+				);
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

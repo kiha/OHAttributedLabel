@@ -22,11 +22,7 @@
 		09E159FE160F57AB003025B4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E159FD160F57AB003025B4 /* CoreText.framework */; };
 		09E15A04160F57E2003025B4 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E15A01160F57E2003025B4 /* NSAttributedString+Attributes.m */; };
 		09E15A05160F57E2003025B4 /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E15A03160F57E2003025B4 /* OHAttributedLabel.m */; };
-		09E15A21160F5DAF003025B4 /* NSAttributedString+Attributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 09E15A00160F57E2003025B4 /* NSAttributedString+Attributes.h */; settings = {ATTRIBUTES = (); }; };
-		09E15A22160F5DAF003025B4 /* OHAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 09E15A02160F57E2003025B4 /* OHAttributedLabel.h */; settings = {ATTRIBUTES = (); }; };
-		09E15A25160F63DE003025B4 /* CoreTextUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 09E15A23160F63DE003025B4 /* CoreTextUtils.h */; };
 		09E15A26160F63DE003025B4 /* CoreTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E15A24160F63DE003025B4 /* CoreTextUtils.m */; };
-		09E15A29160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 09E15A27160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.h */; settings = {ATTRIBUTES = (); }; };
 		09E15A2A160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E15A28160F640D003025B4 /* NSTextCheckingResult+ExtendedURL.m */; };
 		09E15A2C160F64EB003025B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E15A2B160F64EB003025B4 /* UIKit.framework */; };
 /* End PBXBuildFile section */
@@ -234,6 +230,98 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		02C4B4B217A6EB9F005B088B /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdHoc;
+		};
+		02C4B4B317A6EB9F005B088B /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					OHATTRIBUTEDLABEL_DEDICATED_PROJECT,
+					"$(inherited)",
+				);
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = AdHoc;
+		};
+		02C4B4B417A6EBB2005B088B /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Profile;
+		};
+		02C4B4B517A6EBB2005B088B /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					OHATTRIBUTEDLABEL_DEDICATED_PROJECT,
+					"$(inherited)",
+				);
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Profile;
+		};
 		09E159F4160F573A003025B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -333,7 +421,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09E159F4160F573A003025B4 /* Debug */,
+				02C4B4B417A6EBB2005B088B /* Profile */,
 				09E159F5160F573A003025B4 /* Release */,
+				02C4B4B217A6EB9F005B088B /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -342,7 +432,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				09E159F7160F573A003025B4 /* Debug */,
+				02C4B4B517A6EBB2005B088B /* Profile */,
 				09E159F8160F573A003025B4 /* Release */,
+				02C4B4B317A6EB9F005B088B /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

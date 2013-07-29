@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OHAttributedLabel.h"
+#import <OHAttributedLabel/OHAttributedLabel.h>
 
 @interface CustomLinksViewController : UIViewController <OHAttributedLabelDelegate>
 
@@ -15,4 +15,5 @@
 @property(nonatomic, retain) IBOutlet OHAttributedLabel* mentionDemoLabel;
 
 -(IBAction)toggleBold:(UISwitch*)boldSwitch;
+-(IBAction)toggleIndentation:(UISwitch*)indentationSwitch;
 @end

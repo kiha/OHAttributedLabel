@@ -698,8 +698,13 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
     {
         [mutAttrStr setTextColor:self.textColor];
     }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
 	CTTextAlignment coreTextAlign = CTTextAlignmentFromUITextAlignment(self.textAlignment);
 	CTLineBreakMode coreTextLBMode = CTLineBreakModeFromUILineBreakMode(self.lineBreakMode);
+#pragma clang diagnostic pop
+
 	[mutAttrStr setTextAlignment:coreTextAlign lineBreakMode:coreTextLBMode];
     
 	self.attributedText = [NSAttributedString attributedStringWithAttributedString:mutAttrStr];
@@ -786,33 +791,51 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 	[super setTextColor:color]; // will call setNeedsDisplay too
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmismatched-parameter-types"
 -(void)setTextAlignment:(UITextAlignment)alignment
+#pragma clang diagnostic pop
 {
     if (_attributedText)
     {
         CTTextAlignment coreTextAlign = CTTextAlignmentFromUITextAlignment(alignment);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
         CTLineBreakMode coreTextLBMode = CTLineBreakModeFromUILineBreakMode(self.lineBreakMode);
+#pragma clang diagnostic pop
         NSMutableAttributedString* mutAS = [NSMutableAttributedString attributedStringWithAttributedString:_attributedText];
         [mutAS setTextAlignment:coreTextAlign lineBreakMode:coreTextLBMode];
         MRC_RELEASE(_attributedText);
         _attributedText = [[NSAttributedString alloc] initWithAttributedString:mutAS];
     }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
 	[super setTextAlignment:alignment]; // will call setNeedsDisplay too
+#pragma clang diagnostic pop
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmismatched-parameter-types"
 -(void)setLineBreakMode:(UILineBreakMode)lineBreakMode
+#pragma clang diagnostic pop
 {
     if (_attributedText)
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
         CTTextAlignment coreTextAlign = CTTextAlignmentFromUITextAlignment(self.textAlignment);
+#pragma clang diagnostic pop
         CTLineBreakMode coreTextLBMode = CTLineBreakModeFromUILineBreakMode(lineBreakMode);
         NSMutableAttributedString* mutAS = [NSMutableAttributedString attributedStringWithAttributedString:_attributedText];
         [mutAS setTextAlignment:coreTextAlign lineBreakMode:coreTextLBMode];
         MRC_RELEASE(_attributedText);
         _attributedText = [[NSAttributedString alloc] initWithAttributedString:mutAS];
     }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
 	[super setLineBreakMode:lineBreakMode]; // will call setNeedsDisplay too
-	
+#pragma clang diagnostic pop
+
 #if OHATTRIBUTEDLABEL_WARN_ABOUT_KNOWN_ISSUES
 	[self warnAboutKnownIssues_CheckLineBreakMode_FromXIB:NO];
 #endif	

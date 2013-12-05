@@ -166,13 +166,57 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
 
 @implementation NSMutableAttributedString (OHCommodityStyleModifiers)
 
+#define OH_SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
++ (BOOL)systemVersionGreaterThanOrEqualTo7
+{
+    return ![[self class] systemVersionLessThan7];
+}
+
++ (BOOL)systemVersionLessThan7
+{
+    static BOOL systemVersionLessThan7;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        systemVersionLessThan7 = OH_SYSTEM_VERSION_LESS_THAN(@"7") ? YES : NO;
+    });
+    
+    return systemVersionLessThan7;
+}
+
++ (BOOL)systemVersionGreaterThanOrEqualTo6
+{
+    return ![[self class] systemVersionLessThan6];
+}
+
++ (BOOL)systemVersionLessThan6
+{
+    static BOOL systemVersionLessThan6;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        systemVersionLessThan6 = OH_SYSTEM_VERSION_LESS_THAN(@"6") ? YES : NO;
+    });
+    
+    return systemVersionLessThan6;
+}
+
 -(void)setFont:(UIFont*)font
 {
 	[self setFontName:font.fontName size:font.pointSize];
 }
 -(void)setFont:(UIFont*)font range:(NSRange)range
 {
-	[self setFontName:font.fontName size:font.pointSize range:range];
+    if ([[self class] systemVersionGreaterThanOrEqualTo6])
+    {
+        [self removeAttribute:NSFontAttributeName range:range];
+        [self addAttribute:NSFontAttributeName value:font range:range];
+    }
+    else
+    {
+        [self setFontName:font.fontName size:font.pointSize range:range];
+    }
 }
 -(void)setFontName:(NSString*)fontName size:(CGFloat)size
 {

@@ -224,14 +224,8 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
 }
 -(void)setFontName:(NSString*)fontName size:(CGFloat)size range:(NSRange)range
 {
-	// kCTFontAttributeName
-	CTFontRef aFont = CTFontCreateWithName((BRIDGE_CAST CFStringRef)fontName, size, NULL);
-	if (aFont)
-    {
-        [self removeAttribute:(BRIDGE_CAST NSString*)kCTFontAttributeName range:range]; // Work around for Apple leak
-        [self addAttribute:(BRIDGE_CAST NSString*)kCTFontAttributeName value:(BRIDGE_CAST id)aFont range:range];
-        CFRelease(aFont);
-    }
+	UIFont *font = [UIFont fontWithName:fontName size:size];
+    [self setFont:font range:range];
 }
 -(void)setFontFamily:(NSString*)fontFamily size:(CGFloat)size bold:(BOOL)isBold italic:(BOOL)isItalic range:(NSRange)range
 {

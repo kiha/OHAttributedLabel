@@ -81,7 +81,9 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
     {
         CFRange fitCFRange = CFRangeMake(0,0);
         sz = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0,0),NULL,maxSize,&fitCFRange);
-        sz = CGSizeMake( floor(sz.width+1) , floor(sz.height+1) ); // take 1pt of margin for security
+      CGFloat newWidth = sz.width + 1.f;
+      CGFloat newHeight = sz.height + 1.f;
+        sz = CGSizeMake( floor(newWidth) , floor(newHeight) ); // take 1pt of margin for security
         CFRelease(framesetter);
 
         if (fitRange)
@@ -166,13 +168,57 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
 
 @implementation NSMutableAttributedString (OHCommodityStyleModifiers)
 
+#define OH_SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
++ (BOOL)systemVersionGreaterThanOrEqualTo7
+{
+    return ![[self class] systemVersionLessThan7];
+}
+
++ (BOOL)systemVersionLessThan7
+{
+    static BOOL systemVersionLessThan7;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        systemVersionLessThan7 = OH_SYSTEM_VERSION_LESS_THAN(@"7") ? YES : NO;
+    });
+    
+    return systemVersionLessThan7;
+}
+
++ (BOOL)systemVersionGreaterThanOrEqualTo6
+{
+    return ![[self class] systemVersionLessThan6];
+}
+
++ (BOOL)systemVersionLessThan6
+{
+    static BOOL systemVersionLessThan6;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        systemVersionLessThan6 = OH_SYSTEM_VERSION_LESS_THAN(@"6") ? YES : NO;
+    });
+    
+    return systemVersionLessThan6;
+}
+
 -(void)setFont:(UIFont*)font
 {
 	[self setFontName:font.fontName size:font.pointSize];
 }
 -(void)setFont:(UIFont*)font range:(NSRange)range
 {
-	[self setFontName:font.fontName size:font.pointSize range:range];
+    if ([[self class] systemVersionGreaterThanOrEqualTo6])
+    {
+        [self removeAttribute:NSFontAttributeName range:range];
+        [self addAttribute:NSFontAttributeName value:font range:range];
+    }
+    else
+    {
+        [self setFontName:font.fontName size:font.pointSize range:range];
+    }
 }
 -(void)setFontName:(NSString*)fontName size:(CGFloat)size
 {
@@ -180,14 +226,8 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
 }
 -(void)setFontName:(NSString*)fontName size:(CGFloat)size range:(NSRange)range
 {
-	// kCTFontAttributeName
-	CTFontRef aFont = CTFontCreateWithName((BRIDGE_CAST CFStringRef)fontName, size, NULL);
-	if (aFont)
-    {
-        [self removeAttribute:(BRIDGE_CAST NSString*)kCTFontAttributeName range:range]; // Work around for Apple leak
-        [self addAttribute:(BRIDGE_CAST NSString*)kCTFontAttributeName value:(BRIDGE_CAST id)aFont range:range];
-        CFRelease(aFont);
-    }
+	UIFont *font = [UIFont fontWithName:fontName size:size];
+    [self setFont:font range:range];
 }
 -(void)setFontFamily:(NSString*)fontFamily size:(CGFloat)size bold:(BOOL)isBold italic:(BOOL)isItalic range:(NSRange)range
 {

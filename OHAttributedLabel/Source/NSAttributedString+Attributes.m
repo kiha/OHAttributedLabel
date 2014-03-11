@@ -76,22 +76,22 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
 -(CGSize)sizeConstrainedToSize:(CGSize)maxSize fitRange:(NSRange*)fitRange
 {
 	CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((BRIDGE_CAST CFAttributedStringRef)self);
-    CGSize sz = CGSizeMake(0.f, 0.f);
-    if (framesetter)
-    {
-        CFRange fitCFRange = CFRangeMake(0,0);
-        sz = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0,0),NULL,maxSize,&fitCFRange);
-      CGFloat newWidth = sz.width + 1.f;
-      CGFloat newHeight = sz.height + 1.f;
-        sz = CGSizeMake( floor(newWidth) , floor(newHeight) ); // take 1pt of margin for security
-        CFRelease(framesetter);
+  CGSize sz = CGSizeMake(0.f, 0.f);
+  if (framesetter)
+  {
+    CFRange fitCFRange = CFRangeMake(0,0);
+    sz = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0,0),NULL,maxSize,&fitCFRange);
+    CGFloat newWidth = sz.width + 1.f;
+    CGFloat newHeight = sz.height + 1.f;
+    sz = CGSizeMake( floor(newWidth) , floor(newHeight) ); // take 1pt of margin for security
+    CFRelease(framesetter);
 
-        if (fitRange)
-        {
-            *fitRange = NSMakeRange((NSUInteger)fitCFRange.location, (NSUInteger)fitCFRange.length);
-        }
+    if (fitRange)
+    {
+      *fitRange = NSMakeRange((NSUInteger)fitCFRange.location, (NSUInteger)fitCFRange.length);
     }
-    return sz;
+  }
+  return sz;
 }
 
 -(CTFontRef)fontAtIndex:(NSUInteger)index effectiveRange:(NSRangePointer)aRange

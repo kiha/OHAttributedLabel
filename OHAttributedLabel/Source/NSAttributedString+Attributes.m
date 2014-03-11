@@ -81,7 +81,7 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
     {
         CFRange fitCFRange = CFRangeMake(0,0);
         sz = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0,0),NULL,maxSize,&fitCFRange);
-        sz = CGSizeMake( floorf(sz.width+1) , floorf(sz.height+1) ); // take 1pt of margin for security
+        sz = CGSizeMake( floor(sz.width+1) , floor(sz.height+1) ); // take 1pt of margin for security
         CFRelease(framesetter);
 
         if (fitRange)

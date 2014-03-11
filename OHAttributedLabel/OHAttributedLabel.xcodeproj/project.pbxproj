@@ -191,7 +191,7 @@
 		09E159DF160F573A003025B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = AliSoftware;
 			};
 			buildConfigurationList = 09E159E2160F573A003025B4 /* Build configuration list for PBXProject "OHAttributedLabel" */;
@@ -347,6 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

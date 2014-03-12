@@ -562,7 +562,7 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
                     CGSize sz = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0,0),NULL,CGSizeMake(drawingRect.size.width,CGFLOAT_MAX),NULL);
                     if (self.extendBottomToFit)
                     {
-                        CGFloat delta = MAX(0.f , ceil(sz.height - drawingRect.size.height)) + 10 /* Security margin */;
+                        CGFloat delta = MAX(0.f , (CGFloat)ceil(sz.height - drawingRect.size.height)) + 10 /* Security margin */;
                         drawingRect.origin.y -= delta;
                         drawingRect.size.height += delta;
                     }

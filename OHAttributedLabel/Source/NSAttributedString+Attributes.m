@@ -175,6 +175,11 @@ NSString* kOHLinkAttributeName = @"NSLinkAttributeName"; // Use the same value a
     return ![[self class] systemVersionLessThan7];
 }
 
++ (BOOL)systemVersionGreaterThanOrEqualTo8
+{
+  return ![[self class] systemVersionLessThan8];
+}
+
 + (BOOL)systemVersionLessThan7
 {
     static BOOL systemVersionLessThan7;

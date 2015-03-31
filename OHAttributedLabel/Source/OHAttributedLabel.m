@@ -707,6 +707,7 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 
 	[mutAttrStr setTextAlignment:coreTextAlign lineBreakMode:coreTextLBMode];
     
+    _attributedText = nil;
 	self.attributedText = [NSAttributedString attributedStringWithAttributedString:mutAttrStr];
 }
 
@@ -721,14 +722,16 @@ NSDataDetector* sharedReusableDataDetector(NSTextCheckingTypes types)
 
 -(void)setAttributedText:(NSAttributedString*)newText
 {
-	MRC_RELEASE(_attributedText);
-	_attributedText = [newText copy];
-	[self setAccessibilityLabel:_attributedText.string];
+    if (![_attributedText isEqualToAttributedString:newText]) {
+        MRC_RELEASE(_attributedText);
+        _attributedText = [newText copy];
+        [self setAccessibilityLabel:_attributedText.string];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	[self removeAllCustomLinks];
+        [self removeAllCustomLinks];
 #pragma clang diagnostic pop
-    [self setNeedsRecomputeLinksInText];
+        [self setNeedsRecomputeLinksInText];
+    }
 }
 
 
